@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1a1a2e">
+  <title>斐波那契回撤计算器</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>斐波那契回撤计算器</h1>
+      <p class="subtitle">从低点(100%)拉到高点(0%)</p>
+    </header>
+
+    <main>
+      <div class="input-group">
+        <label for="inputA">
+          100% 对应价格 (低点 a)
+        </label>
+        <input type="text" id="inputA" inputmode="decimal"
+               placeholder="例如 0.00000211" autocomplete="off">
+      </div>
+
+      <div class="input-group">
+        <label for="inputG">
+          0% 对应价格 (高点 g)
+        </label>
+        <input type="text" id="inputG" inputmode="decimal"
+               placeholder="例如 0.00000399" autocomplete="off">
+      </div>
+
+      <button id="calcBtn">计算</button>
+      <button id="clearBtn" class="secondary">清空</button>
+
+      <div id="error" class="error"></div>
+
+      <div id="result" class="result hidden">
+        <h2>计算结果</h2>
+        <ul id="resultList"></ul>
+        <p class="hint">点击任意数值可复制</p>
+      </div>
+    </main>
+
+    <footer>
+      <p>PWA · 可安装到桌面</p>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

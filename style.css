@@ -1,0 +1,244 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --bg: #0f0f1a;
+  --card: #1a1a2e;
+  --card2: #16213e;
+  --accent: #e94560;
+  --accent2: #0f3460;
+  --text: #eaeaea;
+  --text-dim: #9aa0b5;
+  --success: #4ade80;
+  --border: #2a2a45;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei",
+               Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.app {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+header {
+  text-align: center;
+  padding: 20px 0 10px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #e94560, #f9a826);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+
+main {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  font-family: "Consolas", "Courier New", monospace;
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(233,69,96,0.15);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.2s;
+  background: linear-gradient(135deg, #e94560, #c62a4a);
+  color: white;
+  margin-bottom: 10px;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button.secondary {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+button.secondary:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.error {
+  color: var(--accent);
+  font-size: 0.85rem;
+  min-height: 20px;
+  margin: 6px 0;
+}
+
+.result {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  animation: fadeIn 0.3s ease;
+}
+
+.result.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result h2 {
+  font-size: 1rem;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+#resultList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#resultList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  background: var(--card2);
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+#resultList li:hover {
+  border-color: var(--accent);
+  background: #1c2a4a;
+}
+
+#resultList li:active {
+  transform: scale(0.99);
+}
+
+#resultList .ratio {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+#resultList .price {
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 0.95rem;
+  color: var(--success);
+  font-weight: 600;
+}
+
+#resultList li.highlight {
+  border-color: var(--accent);
+  background: rgba(233,69,96,0.08);
+}
+
+#resultList li.highlight .price {
+  color: #f9a826;
+}
+
+.hint {
+  margin-top: 12px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  padding: 10px 0;
+}
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--success);
+  color: #0f0f1a;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+@media (max-width: 400px) {
+  main { padding: 18px; }
+  h1 { font-size: 1.3rem; }
+}
